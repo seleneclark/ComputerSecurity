@@ -56,6 +56,17 @@ string displayCharArray(const char * p)
    return output;
 }
 
+/************************************************
+ * CONVERT TO HEX
+ * Convert the data from the memory location
+ * to a hex.  This helps to see the address segments
+ ***********************************************/
+void toHex(char* hex, long &bow, long i) {
+   sprintf(hex, "%lx", *(&bow +i) );
+   for(int i = 0; i < 20; i++){
+   }
+}
+
 /**********************************************
  * ONE : The next item on the call stack
  **********************************************/
@@ -69,6 +80,8 @@ void one(long number)               // 234567
 
    two(number + 111111);    // 345678
 }
+
+
 
 /**********************************************
  * TWO : The bottom of the call stack
@@ -95,9 +108,14 @@ void two(long number)              // 345678
 		<< "-----------------+\n";
    for (long i = 24; i >= -4; i--)   // You may need to change 24 to another number
    {
-	  ////////////////////////////////////////////////
-	  // Insert code here to display the callstack
-	  
+	  char hex[20];
+	  toHex(hex, bow, i);
+	  cout 	<< '[' << setw(2) << i << ']'
+			<< setw(15) << &bow +i
+			<< setw(20) << hex
+			<< setw(20) << *(&bow +i)
+			<< setw(20) << *(&bow +i)
+			<< "\n";
 	  //
 	  ////////////////////////////////////////////////
    }
