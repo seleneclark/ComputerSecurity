@@ -56,6 +56,27 @@ string displayCharArray(const char * p)
    return output;
 }
 
+
+/************************************************
+ * CONVERT TO STRING
+ * Convert the data from p into a human-readable string
+ * by removing all the unprintable characters and replacing
+ * them with a dot
+ ***********************************************/
+string hexToAscii(string hex)
+{
+	string characters;
+   int length = hex.length();
+	for (int i = length; i > 0; i -=2)
+	{
+		string byte = hex.substr(i, 2);
+		char chr = (char)(int)strtol(byte.c_str(), NULL, 16);
+	   characters.push_back(chr);
+	}
+   
+   	return characters;
+}
+
 /************************************************
  * CONVERT TO HEX
  * Convert the data from the memory location
@@ -110,11 +131,12 @@ void two(long number)              // 345678
    {
 	  char hex[20];
 	  toHex(hex, bow, i);
+//	  string character = hexToAscii(string(hex));
 	  cout 	<< '[' << setw(2) << i << ']'
 			<< setw(15) << &bow +i
 			<< setw(20) << hex
 			<< setw(20) << *(&bow +i)
-			<< setw(20) << *(&bow +i)
+			<< setw(20) << hexToAscii(string(hex))
 			<< "\n";
 	  //
 	  ////////////////////////////////////////////////
