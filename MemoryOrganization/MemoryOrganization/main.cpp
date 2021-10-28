@@ -90,7 +90,7 @@ void two(long number)              // 345678
    // start your display of the stack from this point
    long bow = number + 111111;     // 456789
    char text[8] = "**TWO**";
-   long * pLong = NULL;
+   long * address = NULL;
    char * pChar = NULL;
 
    // header for our table. Use these setw() offsets in your table
@@ -105,13 +105,15 @@ void two(long number)              // 345678
 		<< "-------------------+"
 		<< "-------------------+"
 		<< "-----------------+\n";
-   for (long i = 24; i >= -4; i--)   // You may need to change 24 to another number
+   char hexadecimal[20];
+   long long decimal;
+   string characters;
+   for (long i = 22; i >= -4; i--)   // You may need to change 24 to another number
    {
-	  long * address = &bow + i;
-	  char hexadecimal[20];
+	  address = &bow + i;
 	  toHex(hexadecimal, address);
-	  long long decimal = *(address);
-	  string characters = displayCharArray((char *)(address));
+	  decimal = *(address);
+	  characters = displayCharArray((char *)(address));
 	  	  
 	  cout 	<< '[' << setw(2) << i << ']'
 			<< setw(15) << address
@@ -123,12 +125,23 @@ void two(long number)              // 345678
 
    ////////////////////////////////////////////////
    // Insert code here to change the variables in main()
-																				
-   // change text in main() to "*main**"
 
+   // change text in main() to "*main**"
+   
+	char * changeMain = (char *)0x7ffeefbff3a0;
+	*(changeMain + 1) = 'm';
+	*(changeMain + 2) = 'a';
+	*(changeMain + 3) = 'i';
+	*(changeMain + 4) = 'n';
+   
    // change number in main() to 654321
 
+   long * changeNumber = (long *)0x7ffeefbff388;
+   *(changeNumber + 1) = 654321;
+   
    // change pointerFunction in main() to point to pass
+//   void (*p)(void) = pass;
+//   *(0x100002150)() = pass;
 
    // change message in main() to point to passMessage
 
