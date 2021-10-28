@@ -56,36 +56,14 @@ string displayCharArray(const char * p)
    return output;
 }
 
-
-/************************************************
- * CONVERT TO STRING
- * Convert the data from p into a human-readable string
- * by removing all the unprintable characters and replacing
- * them with a dot
- ***********************************************/
-string hexToAscii(string hex)
-{
-	string characters;
-   int length = hex.length();
-	for (int i = length; i > 0; i -=2)
-	{
-		string byte = hex.substr(i, 2);
-		char chr = (char)(int)strtol(byte.c_str(), NULL, 16);
-	   characters.push_back(chr);
-	}
-   
-   	return characters;
-}
-
 /************************************************
  * CONVERT TO HEX
  * Convert the data from the memory location
  * to a hex.  This helps to see the address segments
  ***********************************************/
-void toHex(char* hex, long &bow, long i) {
-   sprintf(hex, "%lx", *(&bow +i) );
-   for(int i = 0; i < 20; i++){
-   }
+void toHex(char * hex, long * address)
+{
+   sprintf(hex, "0x%lx", *(address) );
 }
 
 /**********************************************
@@ -129,17 +107,18 @@ void two(long number)              // 345678
 		<< "-----------------+\n";
    for (long i = 24; i >= -4; i--)   // You may need to change 24 to another number
    {
-	  char hex[20];
-	  toHex(hex, bow, i);
-//	  string character = hexToAscii(string(hex));
+	  long * address = &bow + i;
+	  char hexadecimal[20];
+	  toHex(hexadecimal, address);
+	  long long decimal = *(address);
+	  string characters = displayCharArray((char *)(address));
+	  	  
 	  cout 	<< '[' << setw(2) << i << ']'
-			<< setw(15) << &bow +i
-			<< setw(20) << hex
-			<< setw(20) << *(&bow +i)
-			<< setw(20) << hexToAscii(string(hex))
+			<< setw(15) << address
+			<< setw(20) << hexadecimal
+			<< setw(20) << decimal
+			<< setw(20) << characters
 			<< "\n";
-	  //
-	  ////////////////////////////////////////////////
    }
 
    ////////////////////////////////////////////////
