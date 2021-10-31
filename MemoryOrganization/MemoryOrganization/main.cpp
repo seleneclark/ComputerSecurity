@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <sstream>
 using namespace std;
 
 void one(long number);
@@ -108,7 +109,7 @@ void two(long number)              // 345678
    char hexadecimal[20];
    long long decimal;
    string characters;
-   for (long i = 22; i >= -4; i--)   // You may need to change 24 to another number
+   for (long i = 30; i >= -4; i--)   // You may need to change 24 to another number
    {
 	  address = &bow + i;
 	  toHex(hexadecimal, address);
@@ -124,27 +125,47 @@ void two(long number)              // 345678
    }
 
    ////////////////////////////////////////////////
-   // Insert code here to change the variables in main()
+   pChar = (char * ) & bow;
+	 while (string(pChar++) != "*MAIN**");   //check before moving
+	 std::cout << pChar << (void * ) pChar << std::endl;
 
-   // change text in main() to "*main**"
+	 // change text in main() to "*main**"
+	 pChar[0] = 'm';
+	 pChar[1] = 'a';
+	 pChar[2] = 'i';
+	 pChar[3] = 'n';
+
+	 std::cout << pChar << std::endl;  //show main
+
+	 address = (long * ) & bow;
+	 while ( * address != 123456) {    //check before moving
+		address++; //count pLong
+	 }
+	 std::cout << * address << std::endl;
+	 * address = 654321; // change number in main() to 654321
+	 std::cout << * address << std::endl; //show 654321
+
+   address = (long * ) & bow;
+	 while ( * address != (long long) fail) {
+		address++;
+	 }
+	 std::cout << * address << std::endl;
+	 * address = (long long) pass;
+	 // change pointerFunction in main() to point to pass
+
+	 std::cout << * address << std::endl;
+	 // change message in main() to point to passMessage
+
+   address = (long * ) & bow;
+	 while ( * address != (long long) failMessage) {
+		address++;
+	 }
+	 
+	 pChar = (char * ) * address;
+	 std::cout << string(pChar) << std::endl;
+	 * address = (long long) passMessage;
+	 
+	 pChar = (char * ) * address;
+	 std::cout << string(pChar) << std::endl;
    
-	char * changeMain = (char *)0x7ffeefbff3a0;
-	*(changeMain + 1) = 'm';
-	*(changeMain + 2) = 'a';
-	*(changeMain + 3) = 'i';
-	*(changeMain + 4) = 'n';
-   
-   // change number in main() to 654321
-
-   long * changeNumber = (long *)0x7ffeefbff388;
-   *(changeNumber + 1) = 654321;
-   
-   // change pointerFunction in main() to point to pass
-//   void (*p)(void) = pass;
-//   *(0x100002150)() = pass;
-
-   // change message in main() to point to passMessage
-
-   //
-   ////////////////////////////////////////////////
 }
