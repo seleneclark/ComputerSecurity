@@ -16,6 +16,11 @@ const char * failMessage = ":(";
  **********************************************/
 int main()
 {
+   char text2[8] = "*MAIN1*";
+   bool isTrue = true;
+   char text3[8] = "*MAIN2*";
+   char arr[4] = { 0, 1, 2, 3};
+   
    char text[8] = "*MAIN**";
    long number = 123456;
    void (*pointerFunction)() = fail;
