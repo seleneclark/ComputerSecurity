@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6469394C2759589D002FDFB2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469394B2759589D002FDFB2 /* main.cpp */; };
+		6469395827595CAB002FDFB2 /* message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395727595CAB002FDFB2 /* message.cpp */; };
+		6469395A27595CF1002FDFB2 /* messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395927595CF1002FDFB2 /* messages.cpp */; };
+		6469395C27595D29002FDFB2 /* interact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395B27595D29002FDFB2 /* interact.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,14 @@
 /* Begin PBXFileReference section */
 		646939482759589D002FDFB2 /* Bell-LaPadula */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Bell-LaPadula"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6469394B2759589D002FDFB2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6469395227595AE5002FDFB2 /* messages.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = messages.txt; sourceTree = "<group>"; };
+		6469395327595B0E002FDFB2 /* message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		6469395427595B34002FDFB2 /* messages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messages.h; sourceTree = "<group>"; };
+		6469395527595B7D002FDFB2 /* control.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = control.h; sourceTree = "<group>"; };
+		6469395627595C0A002FDFB2 /* interact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interact.h; sourceTree = "<group>"; };
+		6469395727595CAB002FDFB2 /* message.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = message.cpp; sourceTree = "<group>"; };
+		6469395927595CF1002FDFB2 /* messages.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = messages.cpp; sourceTree = "<group>"; };
+		6469395B27595D29002FDFB2 /* interact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interact.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,14 @@
 			isa = PBXGroup;
 			children = (
 				6469394B2759589D002FDFB2 /* main.cpp */,
+				6469395227595AE5002FDFB2 /* messages.txt */,
+				6469395327595B0E002FDFB2 /* message.h */,
+				6469395427595B34002FDFB2 /* messages.h */,
+				6469395527595B7D002FDFB2 /* control.h */,
+				6469395627595C0A002FDFB2 /* interact.h */,
+				6469395727595CAB002FDFB2 /* message.cpp */,
+				6469395927595CF1002FDFB2 /* messages.cpp */,
+				6469395B27595D29002FDFB2 /* interact.cpp */,
 			);
 			path = "Bell-LaPadula";
 			sourceTree = "<group>";
@@ -120,6 +139,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6469394C2759589D002FDFB2 /* main.cpp in Sources */,
+				6469395A27595CF1002FDFB2 /* messages.cpp in Sources */,
+				6469395827595CAB002FDFB2 /* message.cpp in Sources */,
+				6469395C27595D29002FDFB2 /* interact.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
