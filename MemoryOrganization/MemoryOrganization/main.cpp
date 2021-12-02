@@ -16,11 +16,6 @@ const char * failMessage = ":(";
  **********************************************/
 int main()
 {
-   char text2[8] = "*MAIN1*";
-   bool isTrue = true;
-   char text3[8] = "*MAIN2*";
-   char arr[4] = { 0, 1, 2, 3};
-   
    char text[8] = "*MAIN**";
    long number = 123456;
    void (*pointerFunction)() = fail;
@@ -114,7 +109,7 @@ void two(long number)              // 345678
    char hexadecimal[20];
    long long decimal;
    string characters;
-   for (long i = 30; i >= -4; i--)   // You may need to change 24 to another number
+   for (long i = 35; i >= -4; i--)   // You may need to change 24 to another number
    {
 	  address = &bow + i;
 	  toHex(hexadecimal, address);
@@ -129,48 +124,38 @@ void two(long number)              // 345678
 			<< "\n";
    }
 
-   ////////////////////////////////////////////////
+   // change text in main() to "*main**"
    pChar = (char * ) & bow;
-	 while (string(pChar++) != "*MAIN**");   //check before moving
-	 std::cout << pChar << (void * ) pChar << std::endl;
+   while (string(pChar++) != "*MAIN**");
+   pChar[0] = 'm';
+   pChar[1] = 'a';
+   pChar[2] = 'i';
+   pChar[3] = 'n';
 
-	 // change text in main() to "*main**"
-	 pChar[0] = 'm';
-	 pChar[1] = 'a';
-	 pChar[2] = 'i';
-	 pChar[3] = 'n';
-
-	 std::cout << pChar << std::endl;  //show main
-
-	 address = (long * ) & bow;
-	 while ( * address != 123456) {    //check before moving
-		address++; //count pLong
-	 }
-	 std::cout << * address << std::endl;
-	 * address = 654321; // change number in main() to 654321
-	 std::cout << * address << std::endl; //show 654321
-
+   // change number in main() to 654321
    address = (long * ) & bow;
-	 while ( * address != (long long) fail) {
-		address++;
-	 }
-	 std::cout << * address << std::endl;
-	 * address = (long long) pass;
-	 // change pointerFunction in main() to point to pass
+   while ( * address != 123456)
+   {
+	 address++; //count pLong
+   }
+   * address = 654321;
 
-	 std::cout << * address << std::endl;
-	 // change message in main() to point to passMessage
-
+   // change pointerFunction in main() to point to pass
    address = (long * ) & bow;
-	 while ( * address != (long long) failMessage) {
-		address++;
-	 }
-	 
-	 pChar = (char * ) * address;
-	 std::cout << string(pChar) << std::endl;
-	 * address = (long long) passMessage;
-	 
-	 pChar = (char * ) * address;
-	 std::cout << string(pChar) << std::endl;
+   while ( * address != (long long) fail)
+   {
+	 address++;
+   }
+   * address = (long long) pass;
+
+   // change message in main() to point to passMessage
+   address = (long * ) & bow;
+   while ( * address != (long long) failMessage)
+   {
+	 address++;
+   }
+   pChar = (char * ) * address;
+   * address = (long long) passMessage;
+   pChar = (char * ) * address;
    
 }
