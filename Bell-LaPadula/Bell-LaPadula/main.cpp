@@ -67,38 +67,38 @@ void session(Messages & messages)
    // inteact loop
    while (true)
    {
-	  char option;
-	  cout << "\n<" << userName << "> ";
-	  cin  >> option;
-	  cin.ignore();
+      char option;
+      cout << "\n<" << userName << "> ";
+      cin  >> option;
+      cin.ignore();
 
-	  switch (option)
-	  {
-		 case 'o':
-			displayOptions();
-			break;
-		 case 'd':
-			interact.display();
-			break;
-		 case 's':
-			interact.show();
-			break;
-		 case 'a':
-			interact.add();
-			break;
-		 case 'u':
-			interact.update();
-			break;
-		 case 'r':
-			interact.remove();
-			break;
-		 case 'l':
-			cout << "Goodbye, " << userName << ".\n";
-			return;
-		 default:
-			cout << "Unknown option: '" << option << "'\n";
-			break;
-	  }
+      switch (option)
+      {
+         case 'o':
+            displayOptions();
+            break;
+         case 'd':
+            interact.display();
+            break;
+         case 's':
+            interact.show();
+            break;
+         case 'a':
+            interact.add();
+            break;
+         case 'u':
+            interact.update();
+            break;
+         case 'r':
+            interact.remove();
+            break;
+         case 'l':
+            cout << "Goodbye, " << userName << ".\n";
+            return;
+         default:
+            cout << "Unknown option: '" << option << "'\n";
+            break;
+      }
    }
 }
 
@@ -113,13 +113,13 @@ int main()
    bool done;
    do
    {
-	  session(messages);
+      session(messages);
 
-	  char selection;
-	  cout << "Will another user be logging in? (y/n) ";
-	  cin >> selection;
-	  cin.ignore();
-	  done = (selection == 'y' || selection == 'Y') ? false : true;
+      char selection;
+      cout << "Will another user be logging in? (y/n) ";
+      cin >> selection;
+      cin.ignore();
+      done = (selection == 'y' || selection == 'Y') ? false : true;
    }
    while (!done);
    

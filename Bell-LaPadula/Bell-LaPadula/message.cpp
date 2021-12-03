@@ -6,6 +6,14 @@
  * Summary:
  *    This class stores the notion of a message
  ************************************************************************/
+/***********************************************************************
+ * COMPONENT:
+ *    MESSAGE
+ * Author:
+ *    Br. Helfrich, <your name here if you made a change>
+ * Summary:
+ *    This class stores the notion of a message
+ ************************************************************************/
 
 #include <iostream>   // standard input and output
 #include <cassert>    // because I am paraniod
@@ -29,9 +37,11 @@ Message ::  Message()
  * Create a message and fill it
  **************************************************/
 Message::Message(const string & text,
-				 const string & author,
-				 const string & date)
+                 const string & author,
+                 const string & date,
+                 Control control)
 {
+   this->control = control;
    this->text = text;
    this->author = author;
    this->date = date;
@@ -48,11 +58,11 @@ void Message::displayProperties() const
 {
    // skip this one if there is nothing to see
    if (empty)
-	  return;
+      return;
    
    // display the message
    cout << "\t[" << id << "] ";
-	  cout << "Message from " << author << " at " << date;
+      cout << "Message from " << author << " at " << date;
    cout << endl;
 }
 
@@ -63,8 +73,8 @@ void Message::displayProperties() const
 void Message::displayText() const
 {
    cout << "\tMessage: "
-		<< text
-		<< endl;
+        << text
+        << endl;
 }
 
 /**************************************************
@@ -87,5 +97,11 @@ void Message::clear()
    date.clear();
    empty = true;
 }
+
+
+Control Message::setControl(Control control) {
+   this->control = control;
+}
+
 
 int Message::idNext = 100;

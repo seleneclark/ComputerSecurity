@@ -7,6 +7,7 @@
  *    This class stores the notion of a collection of messages
  ************************************************************************/
 
+
 #pragma once
 
 #include <string>     // for convenience
@@ -21,26 +22,29 @@
 class Messages
 {
 public:
+   Control getMessageControl(int id);
+
    // constructor: read a file to fill the messages
    Messages(const char * fileName) { readMessages(fileName); }
 
    // display the list of messages
-   void display() const;
+   void display(Control userControl) const;
 
    // show a single message
    void show(int id) const;
 
    // update one single message
    void update(int id,
-			   const std::string & text);
+               const std::string & text);
 
    // remove a single message
    void remove(int id);
 
    // add a new message
    void add(const std::string & text,
-			const std::string & author,
-			const std::string & date);
+            const std::string & author,
+            const std::string & date,
+            Control control);
 
 //private: for purposes of testing, need access to these variables
    // the list of messages
