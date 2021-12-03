@@ -9,6 +9,7 @@
 
 // you may need to put something here...
 
+#pragma once
 
 
 #include <map>
