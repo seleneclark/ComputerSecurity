@@ -2,7 +2,7 @@
 * Program:
 *    Lab 12, Bell-LaPadula
 * Author:
-*    Br. Helfrich, <your name here if you made a change>
+*    Br. Helfrich, Selene Clark
 * Summary:
 *    This program is designed to keep track of a number of secret
 *    messages. IT will display messages to the appropriate users
@@ -13,7 +13,8 @@
 #include <string>     // for convenience
 #include <cassert>    // because I am paraniod
 #include "interact.h" // the interaction code
-#include "messages.h" // the collectio of messages
+#include "messages.h" // the collection of messages
+#include "bell-LaPadulaTest.h" //test suite
 using namespace std;
 
 const char * FILE_NAME = "messages.txt";
