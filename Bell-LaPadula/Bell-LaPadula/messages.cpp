@@ -7,7 +7,6 @@
  *    This class stores the notion of a collection of messages
  ************************************************************************/
 
-
 #include <string>     // for convenience
 #include <list>       // to store the messages
 #include <iostream>   // standard input and output
@@ -132,6 +131,7 @@ void Messages::readMessages(const char *fileName)
       }
    }
 
+   
    // close up shop!
    fin.close();
 }
