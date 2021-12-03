@@ -9,26 +9,21 @@
 
 // you may need to put something here...
 
+
 #pragma once
 
-
-#include <map>
 #include <string>
+#include <map>
 
-
-
-enum 
-    Control {
-    SECRET,
-	PUBLIC,
+enum Control {
+    PUBLIC,
+    CONFIDENTIAL,
     PRIVILEGED,
-	CONFIDENTIAL
-    
+    SECRET
 };
 
+bool securityControlRead(Control assetControl, Control subjectControl);
 
 bool securityControlWrite(Control assetControl, Control subjectControl);
-
-bool securityControlRead(Control assetControl, Control subjectControl);
 
 Control convertToControl(std::string controlString);
