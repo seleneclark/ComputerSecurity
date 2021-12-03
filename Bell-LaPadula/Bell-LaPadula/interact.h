@@ -7,6 +7,7 @@
  *    This class allows one user to interact with the system
  ************************************************************************/
 
+
 #pragma once
 
 #include <string>     // for convenience
@@ -21,7 +22,7 @@ struct User
 {
    const char *name;
    const char *password;
-   Control control;   //for control
+   Control control;
 };
 
 /****************************************************
