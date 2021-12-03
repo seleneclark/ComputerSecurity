@@ -7,4 +7,4 @@
  *    This class tests the program
  ************************************************************************/
 
-#include "bell-LaPadulaTest.h"
+#include "bellLaPadulaTest.h"

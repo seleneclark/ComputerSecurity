@@ -42,7 +42,7 @@ public:
 			const std::string & author,
 			const std::string & date);
 
-private:
+//private: for purposes of testing, need access to these variables
    // the list of messages
    std::list <Message> messages;
 

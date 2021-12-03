@@ -48,8 +48,8 @@ public:
 
    // remove one message from the list
    void remove();
-
-private:
+   
+//private: for purposes of testing, need access to these variables
    Messages * pMessages;
    std::string userName;
 

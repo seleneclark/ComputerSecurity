@@ -14,7 +14,7 @@
 #include <cassert>    // because I am paraniod
 #include "interact.h" // the interaction code
 #include "messages.h" // the collection of messages
-#include "bell-LaPadulaTest.h" //test suite
+#include "bellLaPadulaTest.h" //test suite
 using namespace std;
 
 const char * FILE_NAME = "messages.txt";
@@ -57,6 +57,10 @@ void session(Messages & messages)
 
    // start a session
    Interact interact(userName, password, messages);
+   
+   //test if user has access to the correct messages
+   BellLaPadulaTest test(interact, messages, userName);
+   
    cout << "Welcome, " << userName << " please select an option:\n";
    displayOptions();
 

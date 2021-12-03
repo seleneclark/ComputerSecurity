@@ -43,7 +43,7 @@ public:
    // clear out a message
    void clear();
    
-private:
+//private: for purposes of testing, need access to these variables
    int id;                   // the unique ID of this message
    static int idNext;        // the id of the next message created
    bool empty;               // is this message empty / cleared?

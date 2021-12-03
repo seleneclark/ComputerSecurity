@@ -11,7 +11,7 @@
 		6469395827595CAB002FDFB2 /* message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395727595CAB002FDFB2 /* message.cpp */; };
 		6469395A27595CF1002FDFB2 /* messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395927595CF1002FDFB2 /* messages.cpp */; };
 		6469395C27595D29002FDFB2 /* interact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395B27595D29002FDFB2 /* interact.cpp */; };
-		6469395F2759D453002FDFB2 /* bell-LaPadulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395D2759D453002FDFB2 /* bell-LaPadulaTest.cpp */; };
+		6469395F2759D453002FDFB2 /* bellLaPadulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6469395D2759D453002FDFB2 /* bellLaPadulaTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,8 +37,8 @@
 		6469395727595CAB002FDFB2 /* message.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = message.cpp; sourceTree = "<group>"; };
 		6469395927595CF1002FDFB2 /* messages.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = messages.cpp; sourceTree = "<group>"; };
 		6469395B27595D29002FDFB2 /* interact.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = interact.cpp; sourceTree = "<group>"; };
-		6469395D2759D453002FDFB2 /* bell-LaPadulaTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bell-LaPadulaTest.cpp"; sourceTree = "<group>"; };
-		6469395E2759D453002FDFB2 /* bell-LaPadulaTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bell-LaPadulaTest.h"; sourceTree = "<group>"; };
+		6469395D2759D453002FDFB2 /* bellLaPadulaTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bellLaPadulaTest.cpp; sourceTree = "<group>"; };
+		6469395E2759D453002FDFB2 /* bellLaPadulaTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bellLaPadulaTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +80,8 @@
 				6469395527595B7D002FDFB2 /* control.h */,
 				6469395627595C0A002FDFB2 /* interact.h */,
 				6469395B27595D29002FDFB2 /* interact.cpp */,
-				6469395D2759D453002FDFB2 /* bell-LaPadulaTest.cpp */,
-				6469395E2759D453002FDFB2 /* bell-LaPadulaTest.h */,
+				6469395D2759D453002FDFB2 /* bellLaPadulaTest.cpp */,
+				6469395E2759D453002FDFB2 /* bellLaPadulaTest.h */,
 			);
 			path = "Bell-LaPadula";
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 				6469394C2759589D002FDFB2 /* main.cpp in Sources */,
 				6469395A27595CF1002FDFB2 /* messages.cpp in Sources */,
 				6469395827595CAB002FDFB2 /* message.cpp in Sources */,
-				6469395F2759D453002FDFB2 /* bell-LaPadulaTest.cpp in Sources */,
+				6469395F2759D453002FDFB2 /* bellLaPadulaTest.cpp in Sources */,
 				6469395C27595D29002FDFB2 /* interact.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
