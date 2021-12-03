@@ -8,7 +8,6 @@
  ************************************************************************/
 
 
-#include "control.h"  //To control Bell-LaPaula
 #include <iostream>   // standard input and output
 #include <string>     // for convenience
 #include <cassert>    // because I am paraniod
@@ -16,7 +15,7 @@
 #include "messages.h" // to interact with the collection of messages
 #include "control.h"  // all the Bell-LaPadula stuff
 #include "interact.h" // the interact class and User structure
-
+#include "control.h"  //Access control Bell-LaPaula
 
 using namespace std;
 
@@ -26,7 +25,7 @@ using namespace std;
  *************************************************************/
 const User users[] =
 {
-   { "AdmiralAbe",     "password", SECRET},     //to password
+   { "AdmiralAbe",     "password", SECRET},  
    { "CaptainCharlie", "password", PRIVILEGED}, 
    { "SeamanSam",      "password", CONFIDENTIAL},
    { "SeamanSue",      "password", CONFIDENTIAL},
@@ -54,9 +53,8 @@ Interact::Interact(const string & userName,
  ****************************************************/
 void Interact::show() const
 {
-    Control userControl = users[idFromUser(userName)].control;  // to control here
-    
-	Control messageControl = pMessages->getMessageControl(promptForId("display"));
+    Control userControl = users[idFromUser(userName)].control;
+    Control messageControl = pMessages->getMessageControl(promptForId("display"));
    
     if(securityControlRead(messageControl,userControl))
       pMessages->show(promptForId("display"));
@@ -68,7 +66,7 @@ void Interact::show() const
  ***************************************************/
 void Interact::display() const
 {
-    Control userControl = users[idFromUser(userName)].control; //to user control
+    Control userControl = users[idFromUser(userName)].control;
    pMessages->display(userControl);
 }
 
@@ -81,7 +79,7 @@ void Interact::add()
    pMessages->add(promptForLine("message"),
                   userName,
                   promptForLine("date"),
-                  users[idFromUser(userName)].control); //to control
+                  users[idFromUser(userName)].control);
 }
 
 /****************************************************
@@ -90,7 +88,6 @@ void Interact::add()
  ****************************************************/
 void Interact::update()
 {
-	
    int id = promptForId("update");
     Control userControl = users[idFromUser(userName)].control;
     Control messageControl = pMessages->getMessageControl(id);
@@ -98,7 +95,7 @@ void Interact::update()
    if(securityControlWrite(messageControl,userControl))
       pMessages->update(id,promptForLine("message"));
    else
-      cout <<"Sorry, Access was not allowed." << endl;
+      cout <<"Access denied" << endl;
 }
 
 /****************************************************
@@ -109,13 +106,11 @@ void Interact::remove()
 {
     int id = promptForId("delete");
    Control userControl = users[idFromUser(userName)].control;
-   
-   
    Control messageControl = pMessages->getMessageControl(id);
    if(securityControlWrite(messageControl,userControl))
       pMessages->remove(id);
    else
-      cout <<"Sorry, Access was not allowed." << endl;
+      cout <<"Access denied" << endl;
    
 }
 
