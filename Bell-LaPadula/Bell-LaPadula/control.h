@@ -7,6 +7,6 @@
  *    This class stores the notion of Bell-LaPadula
  ************************************************************************/
 
-#pragma once
+teste
 
 // you may need to put something here...
