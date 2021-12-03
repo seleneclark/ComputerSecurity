@@ -21,6 +21,7 @@ struct User
 {
    const char *name;
    const char *password;
+   Control control;   //for control
 };
 
 /****************************************************
@@ -31,8 +32,8 @@ class Interact
 {
 public:
    Interact(const std::string & userName,
-			const std::string & password,
-			Messages & messages);
+            const std::string & password,
+            Messages & messages);
 
    // show a single message
    void show() const;
@@ -61,7 +62,7 @@ private:
 
    // authenticate the user;
    void authenticate(const std::string & userName,
-					 const std::string & password) const;
+                     const std::string & password) const;
 
    // find the ID of a given user
    int idFromUser(const std::string & userName) const;
