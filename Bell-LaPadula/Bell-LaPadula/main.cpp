@@ -8,7 +8,6 @@
 *    messages. IT will display messages to the appropriate users
 *    and withhold messages from those lacking the authority.
 ************************************************************************/
-
 #include <iostream>   // standard input and output
 #include <string>     // for convenience
 #include <cassert>    // because I am paraniod
