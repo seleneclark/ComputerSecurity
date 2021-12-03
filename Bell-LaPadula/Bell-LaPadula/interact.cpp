@@ -7,13 +7,16 @@
  *    This class allows one user to interact with the system
  ************************************************************************/
 
+
+#include "control.h"  //To control Bell-LaPaula
 #include <iostream>   // standard input and output
 #include <string>     // for convenience
 #include <cassert>    // because I am paraniod
-#include <stdlib.h>   // for atoi
+#include <stdlib.h>   // for atoi 
 #include "messages.h" // to interact with the collection of messages
 #include "control.h"  // all the Bell-LaPadula stuff
 #include "interact.h" // the interact class and User structure
+
 
 using namespace std;
 
@@ -23,11 +26,11 @@ using namespace std;
  *************************************************************/
 const User users[] =
 {
-   { "AdmiralAbe",     "password" },
-   { "CaptainCharlie", "password" },
-   { "SeamanSam",      "password" },
-   { "SeamanSue",      "password" },
-   { "SeamanSly",      "password" }
+   { "AdmiralAbe",     "password", SECRET},     //to password
+   { "CaptainCharlie", "password", PRIVILEGED}, 
+   { "SeamanSam",      "password", CONFIDENTIAL},
+   { "SeamanSue",      "password", CONFIDENTIAL},
+   { "SeamanSly",      "password", CONFIDENTIAL}
 };
 
 const int ID_INVALID = -1;
@@ -37,8 +40,8 @@ const int ID_INVALID = -1;
  * Authenticat ethe user and get him/her all set up
  ***************************************************/
 Interact::Interact(const string & userName,
-				   const string & password,
-				   Messages & messages)
+                   const string & password,
+                   Messages & messages)
 {
    authenticate(userName, password);
    this->userName = userName;
@@ -51,7 +54,12 @@ Interact::Interact(const string & userName,
  ****************************************************/
 void Interact::show() const
 {
-   pMessages->show(promptForId("display"));
+    Control userControl = users[idFromUser(userName)].control;  // to control here
+    
+	Control messageControl = pMessages->getMessageControl(promptForId("display"));
+   
+    if(securityControlRead(messageControl,userControl))
+      pMessages->show(promptForId("display"));
 }
    
 /****************************************************
@@ -60,7 +68,8 @@ void Interact::show() const
  ***************************************************/
 void Interact::display() const
 {
-   pMessages->display();
+    Control userControl = users[idFromUser(userName)].control; //to user control
+   pMessages->display(userControl);
 }
 
 /****************************************************
@@ -70,8 +79,9 @@ void Interact::display() const
 void Interact::add()
 {
    pMessages->add(promptForLine("message"),
-				  userName,
-				  promptForLine("date"));
+                  userName,
+                  promptForLine("date"),
+                  users[idFromUser(userName)].control); //to control
 }
 
 /****************************************************
@@ -80,9 +90,15 @@ void Interact::add()
  ****************************************************/
 void Interact::update()
 {
+	
    int id = promptForId("update");
-   pMessages->update(id,
-					 promptForLine("message"));
+    Control userControl = users[idFromUser(userName)].control;
+    Control messageControl = pMessages->getMessageControl(id);
+   
+   if(securityControlWrite(messageControl,userControl))
+      pMessages->update(id,promptForLine("message"));
+   else
+      cout <<"Sorry, Access was not allowed." << endl;
 }
 
 /****************************************************
@@ -91,7 +107,16 @@ void Interact::update()
  ***************************************************/
 void Interact::remove()
 {
-   pMessages->remove(promptForId("delete"));
+    int id = promptForId("delete");
+   Control userControl = users[idFromUser(userName)].control;
+   
+   
+   Control messageControl = pMessages->getMessageControl(id);
+   if(securityControlWrite(messageControl,userControl))
+      pMessages->remove(id);
+   else
+      cout <<"Sorry, Access was not allowed." << endl;
+   
 }
 
 /****************************************************
@@ -101,7 +126,7 @@ void Interact::remove()
 void displayUsers()
 {
    for (int idUser = 0; idUser < sizeof(users) / sizeof(users[0]); idUser++)
-	  cout << "\t" << users[idUser].name << endl;
+      cout << "\t" << users[idUser].name << endl;
 }
    
 /****************************************************
@@ -134,12 +159,12 @@ int Interact::promptForId(const char * verb) const
  * authenticate the user: find their control level
  ****************************************************/
 void Interact::authenticate(const string & userName,
-							const string & password) const
+                            const string & password) const
 {
    int id = idFromUser(userName);
    bool authenticated = false;
    if (ID_INVALID != id && password == string(users[id].password))
-	  authenticated = true;
+      authenticated = true;
 }
 
 /****************************************************
@@ -149,7 +174,7 @@ void Interact::authenticate(const string & userName,
 int Interact::idFromUser(const string & userName) const
 {
    for (int idUser = 0; idUser < sizeof(users) / sizeof(users[0]); idUser++)
-	  if (userName == string(users[idUser].name))
-		 return idUser;
+      if (userName == string(users[idUser].name))
+         return idUser;
    return ID_INVALID;
 }
