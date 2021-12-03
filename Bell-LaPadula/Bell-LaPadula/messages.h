@@ -7,7 +7,6 @@
  *    This class stores the notion of a collection of messages
  ************************************************************************/
 
-
 #pragma once
 
 #include <string>     // for convenience
