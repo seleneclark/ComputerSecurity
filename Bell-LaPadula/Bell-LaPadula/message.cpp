@@ -1,20 +1,3 @@
-/***********************************************************************
- * COMPONENT:
- *    MESSAGE
- * Author:
- *    Br. Helfrich, <your name here if you made a change>
- * Summary:
- *    This class stores the notion of a message
- ************************************************************************/
-/***********************************************************************
- * COMPONENT:
- *    MESSAGE
- * Author:
- *    Br. Helfrich, <your name here if you made a change>
- * Summary:
- *    This class stores the notion of a message
- ************************************************************************/
-
 #include <iostream>   // standard input and output
 #include <cassert>    // because I am paraniod
 #include "message.h"  // for the header file
