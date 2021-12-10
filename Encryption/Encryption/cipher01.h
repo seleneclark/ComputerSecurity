@@ -5,6 +5,8 @@
 ********************************************************************/
 #ifndef CIPHER01_H
 #define CIPHER01_H
+#include <stdio.h>
+using namespace std;
 
 /********************************************************************
  * CLASS
@@ -12,18 +14,22 @@
 class Cipher01 : public Cipher
 {
 public:
-   virtual std::string getPseudoAuth()  { return "pseudocode author"; }
-   virtual std::string getCipherName()  { return "cipher name"; }
-   virtual std::string getEncryptAuth() { return "encrypt author"; }
-   virtual std::string getDecryptAuth() { return "decrypt author"; }
-
+   virtual std::string getPseudoAuth()  { return "Selene Clark"; }
+	  virtual std::string getCipherName()  { return "Hill Cypher"; }
+	  virtual std::string getEncryptAuth() { return "Selene Clark"; }
+	  virtual std::string getDecryptAuth() { return "Selene Clark"; }
    /***********************************************************
     * GET CIPHER CITATION
     * Returns the citation from which we learned about the cipher
     ***********************************************************/
    virtual std::string getCipherCitation()
    {
-      return std::string("citation");
+	  std::string s;
+	  s += "Hill, Lester S. “Cryptography in an Algebraic Alphabet.”\n";
+	  s += "    The American Mathematical Monthly, vol. 36, no. 6,\n";
+	  s += "    Mathematical Association of America, 1929, pp. 306–12,\n";
+	  s += "    https://doi.org/10.2307/2298294.";
+	  return std::string(s);
    }
    
    /**********************************************************
