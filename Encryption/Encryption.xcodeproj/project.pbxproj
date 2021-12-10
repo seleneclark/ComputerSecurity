@@ -23,9 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		640C0593276407A400F2623A /* cipher01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipher01.h; sourceTree = "<group>"; };
 		64719FE127611B020062785A /* Encryption */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Encryption; sourceTree = BUILT_PRODUCTS_DIR; };
 		64719FE427611B020062785A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		64719FF427611B990062785A /* cipher01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipher01.h; sourceTree = "<group>"; };
 		64719FF527611B990062785A /* cipher04.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipher04.h; sourceTree = "<group>"; };
 		64719FF627611B990062785A /* cipher07.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipher07.h; sourceTree = "<group>"; };
 		64719FF727611B990062785A /* cipher03.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipher03.h; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				64719FFC27611B990062785A /* cipher.h */,
-				64719FF427611B990062785A /* cipher01.h */,
+				640C0593276407A400F2623A /* cipher01.h */,
 				64719FF927611B990062785A /* cipher02.h */,
 				64719FF727611B990062785A /* cipher03.h */,
 				64719FF527611B990062785A /* cipher04.h */,
