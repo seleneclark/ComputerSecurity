@@ -38,16 +38,21 @@ public:
     **********************************************************/
    virtual std::string getPseudocode()
    {
-      std::string str;
+	  std::string str;
+	  // The encrypt pseudocode
+	  str =  "encrypt(plainText, password)\n";
+	  str += "   key <- getMatrixKey(password)\n";
+	  str += "   cipherText <- matrixMultiply(key, plainText)\n";
+	  str += "   RETURN cipherText\n\n";
 
-      // TODO: please format your pseudocode
-      // The encrypt pseudocode
-      str =  "insert the encryption pseudocode\n";
+	  // The decrypt pseudocode
+	  str += "decrypt(cipherText, password)\n";
+	  str += "   key <- getMatrixKey(password)\n";
+	  str += "   decryptKey <- getInverseMatrix(key)\n";
+	  str += "   plainText  <- matrixMultiply(decryptKey, cipherText)\n";
+	  str += "   RETURN plainText\n\n";
 
-      // The decrypt pseudocode
-      str += "insert the decryption pseudocode\n";
-
-      return str;
+	  return str;
    }
 
    /**********************************************************
