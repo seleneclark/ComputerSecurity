@@ -56,15 +56,57 @@ public:
    }
 
    /**********************************************************
+   * MATRIXMULTIPLY
+   * Multiply the key matrix against the plainText to get the cipherMatrix
+   **********************************************************/
+   void matrixMultiply(int key[3][3],  const std::string & plainText, int cipherMatrix[3][1] )
+   {
+	  int messageVector[3][1] = { 2, 0, 19};
+	  for (int i = 0; i < 3; i++)
+	  {
+		 for (int j = 0; j < 1; j++)
+		 {
+		 cipherMatrix[i][j] = 0;
+
+			for (int x = 0; x < 3; x++)
+			{
+			   cipherMatrix[i][j] +=
+			   key[i][x] * messageVector[x][j];
+			}
+		 cipherMatrix[i][j] = cipherMatrix[i][j] % 26;
+		 }
+	  }
+   }
+   
+   /**********************************************************
+   * MATRIXTOSTRING
+   * Convert the matrix to a string
+   **********************************************************/
+   std::string matrixToString(int matrix[][1] )
+   {
+	 std::string text;
+	 int size = 3;
+	 for (int i = 0; i < size; i++)
+	 {
+		text += 'A' + matrix[i][0];
+	 }
+	 return text;
+   }
+   
+   /**********************************************************
     * ENCRYPT
     * TODO: ADD description
     **********************************************************/
    virtual std::string encrypt(const std::string & plainText, 
                                const std::string & password)
    {
-      std::string cipherText = plainText;
-      // TODO - Add your code here
-      return cipherText;
+	  int key[3][3] = { {6,24,1}, {13,16,10}, {20,17,15}};
+	  int cipherMatrix[3][1];
+
+	  matrixMultiply(key, plainText, cipherMatrix);
+	  std::string cipherText = matrixToString(cipherMatrix);
+	  //      std::string cipherText = plainText;
+	  return cipherText;
    }
 
    /**********************************************************
