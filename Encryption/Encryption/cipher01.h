@@ -6,7 +6,8 @@
 #ifndef CIPHER01_H
 #define CIPHER01_H
 #define MATRIXSIZE 2
-#define CHARACTER_SIZE 61
+#define ALPHABET_SIZE 94
+#define LOWEST_CHAR_VALUE 32
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -119,7 +120,7 @@ public:
 	  int messageVector[MATRIXSIZE];
 	  for (int i = 0; i < MATRIXSIZE; i++)
 	  {
-		 messageVector[i] = (int)plainText[i] - 65;
+		 messageVector[i] = (int)plainText[i] - LOWEST_CHAR_VALUE;
 	  }
 	  for (int i = 0; i < MATRIXSIZE; i++)
 	  {
@@ -129,7 +130,7 @@ public:
 		 {
 			   matrix[i] += key[i][j] * messageVector[j];
 		 }
-		 matrix[i] = matrix[i] % CHARACTER_SIZE;
+		 matrix[i] = matrix[i] % ALPHABET_SIZE;
 	  }
    }
    
@@ -144,9 +145,10 @@ public:
 	 {
 		if (matrix[i] < 0)
 		{
-		   matrix[i] = matrix[i]+ CHARACTER_SIZE;
+		   matrix[i] = matrix[i] + ALPHABET_SIZE;
 		}
-		text += 'A' + matrix[i];
+		text += static_cast<char>(matrix[i] + LOWEST_CHAR_VALUE);
+
 	 }
 	 return text;
    }
