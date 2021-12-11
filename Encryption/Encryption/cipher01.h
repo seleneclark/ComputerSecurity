@@ -87,7 +87,7 @@ public:
    * GETMATRIXKEY
    * Use password to create the matrix key
    **********************************************************/
-   void getMatrixKey(const std::string & plainText, const std::string & password)
+   void getMatrixKey(const std::string & password)
    {
 	  int pass = 0;
 	  for (int i = 0; i < password.length(); i++)
@@ -190,11 +190,15 @@ public:
    virtual string encrypt(const std::string & plainText,
                                const std::string & password)
    {
-	  getMatrixKey(plainText, password);
+	  getMatrixKey(password);
 	  string cipherText = "";
-	  for (int i = 0; i < plainText.length(); i = i + 2)
+	  char messageLength[5];
+	  sprintf(messageLength, "%04ld", (long)plainText.length());
+	  string plainTextAndLength = string(messageLength);
+	  plainTextAndLength += plainText;
+	  for (long i = 0; i < plainTextAndLength.length(); i = i + 2)
 	  {
-		 matrixMultiply(plainText.substr(i, 2));
+		 matrixMultiply(plainTextAndLength.substr(i, 2));
 		 cipherText += matrixToString(matrix);
 	  }
 	  return cipherText;
@@ -207,13 +211,15 @@ public:
    virtual std::string decrypt(const std::string & cipherText, 
                                const std::string & password)
    {
-	  string plainText= "";
+	  string plainTextAndLength= "";
 	  getInverse(password);
 	  for (int i = 0; i < cipherText.length(); i = i + 2)
 	  {
 		 matrixMultiply(cipherText.substr(i, 2));
-		 plainText += matrixToString(matrix);
+		 plainTextAndLength += matrixToString(matrix);
 	  }
+	  int plainTextLength = atoi(plainTextAndLength.substr(0,4).c_str());
+	  string plainText = plainTextAndLength.substr(4,plainTextLength);
       return plainText;
    }
    
@@ -221,7 +227,6 @@ public:
 private:
    int key[2][2];
    int matrix[];
-   
 };
 
 #endif // CIPHER01_H
