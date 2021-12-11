@@ -15,9 +15,12 @@ class Cipher01 : public Cipher
 {
 public:
    virtual std::string getPseudoAuth()  { return "Selene Clark"; }
-	  virtual std::string getCipherName()  { return "Hill Cypher"; }
-	  virtual std::string getEncryptAuth() { return "Selene Clark"; }
-	  virtual std::string getDecryptAuth() { return "Selene Clark"; }
+   virtual std::string getCipherName()  { return "Hill Cypher"; }
+   virtual std::string getEncryptAuth() { return "Selene Clark"; }
+   virtual std::string getDecryptAuth() { return "Selene Clark"; }
+   
+   
+   
    /***********************************************************
     * GET CIPHER CITATION
     * Returns the citation from which we learned about the cipher
@@ -56,24 +59,46 @@ public:
    }
 
    /**********************************************************
+   * GETMATRIXKEY
+   * Use password to create the matrix key
+   **********************************************************/
+   void getMatrixKey(const std::string & plainText, const std::string & password)
+   {
+	  matrixSize = (int)plainText.length();
+	  key = new int[matrixSize * matrixSize];
+	  int testArr[3][3] = { {6,24,1}, {13,16,10}, {20,17,15}};
+	  for (int i = 0; i < matrixSize; i++)
+	  {
+		 for (int j = 0; j < matrixSize; j++)
+		 {
+			*(key + (i * matrixSize) + j) = testArr[i][j];
+//			*(key + (i * matrixSize) + j) = rand() % 100;
+		 }
+	  }
+
+   }
+
+   /**********************************************************
    * MATRIXMULTIPLY
    * Multiply the key matrix against the plainText to get the cipherMatrix
    **********************************************************/
-   void matrixMultiply(int key[3][3],  const std::string & plainText, int cipherMatrix[3][1] )
+   void matrixMultiply( const std::string & plainText)
    {
-	  int messageVector[3][1] = { 2, 0, 19};
-	  for (int i = 0; i < 3; i++)
+	  int messageVector[matrixSize][1];
+	  for (int i = 0; i < matrixSize; i++)
+	  {
+		 messageVector[i][0] = (int)plainText[i] - 65;;
+	  }
+	  for (int i = 0; i < matrixSize; i++)
 	  {
 		 for (int j = 0; j < 1; j++)
 		 {
-		 cipherMatrix[i][j] = 0;
-
+			cypherMatrix[i][j] = 0;
 			for (int x = 0; x < 3; x++)
 			{
-			   cipherMatrix[i][j] +=
-			   key[i][x] * messageVector[x][j];
+			   cypherMatrix[i][j] += * (key + (i * matrixSize) + x) * messageVector[x][j];
 			}
-		 cipherMatrix[i][j] = cipherMatrix[i][j] % 26;
+		 cypherMatrix[i][j] = cypherMatrix[i][j] % 26;
 		 }
 	  }
    }
@@ -82,13 +107,12 @@ public:
    * MATRIXTOSTRING
    * Convert the matrix to a string
    **********************************************************/
-   std::string matrixToString(int matrix[][1] )
+   string matrixToString()
    {
-	 std::string text;
-	 int size = 3;
-	 for (int i = 0; i < size; i++)
+	 string text;
+	 for (int i = 0; i < matrixSize; i++)
 	 {
-		text += 'A' + matrix[i][0];
+		text += 'A' + cypherMatrix[i][0];
 	 }
 	 return text;
    }
@@ -97,16 +121,13 @@ public:
     * ENCRYPT
     * TODO: ADD description
     **********************************************************/
-   virtual std::string encrypt(const std::string & plainText, 
+   virtual string encrypt(const std::string & plainText,
                                const std::string & password)
    {
-	  int key[3][3] = { {6,24,1}, {13,16,10}, {20,17,15}};
-	  int cipherMatrix[3][1];
-
-	  matrixMultiply(key, plainText, cipherMatrix);
-	  std::string cipherText = matrixToString(cipherMatrix);
-	  //      std::string cipherText = plainText;
-	  return cipherText;
+	  getMatrixKey(plainText, password);
+	  matrixMultiply(plainText);
+	  string cypherText = matrixToString();
+	  return cypherText;
    }
 
    /**********************************************************
@@ -120,6 +141,13 @@ public:
       // TODO - Add your code here
       return plainText;
    }
+   
+   
+private:
+   int *key;
+   int matrixSize;
+   int cypherMatrix[][1];
+   //   float *inv;
 };
 
 #endif // CIPHER01_H
