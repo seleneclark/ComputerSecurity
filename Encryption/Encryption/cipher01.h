@@ -115,12 +115,12 @@ public:
    * MATRIXMULTIPLY
    * Multiply the key matrix against the plainText to get the cipherMatrix
    **********************************************************/
-   void matrixMultiply( const std::string & plainText)
+   void matrixMultiply( const std::string & text)
    {
 	  int messageVector[MATRIXSIZE];
 	  for (int i = 0; i < MATRIXSIZE; i++)
 	  {
-		 messageVector[i] = (int)plainText[i] - LOWEST_CHAR_VALUE;
+		 messageVector[i] = (int)text[i] - LOWEST_CHAR_VALUE;
 	  }
 	  for (int i = 0; i < MATRIXSIZE; i++)
 	  {
