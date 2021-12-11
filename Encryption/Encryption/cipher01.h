@@ -134,54 +134,6 @@ public:
    }
    
    /**********************************************************
-   * INVERSEMATRIXMULTIPLY
-   * Multiply the iinverse matrix against the plainText to get the cipherMatrix
-   **********************************************************/
-//   void inverseMatrixMultiply( const std::string & plainText)
-//   {
-//	  *(inverseKey) = 0.158730159;
-//	  *(inverseKey + 1) = -0.619047619;
-//	  *(inverseKey + 2) = 0.507936508;
-//	  *(inverseKey + 3) = 0.011337868;
-//	  *(inverseKey + 4) = 0.158730159;
-//	  *(inverseKey + 5) = -0.106575964;
-//	  *(inverseKey + 6) = -0.224489796;
-//	  *(inverseKey + 7) = 0.857142857;
-//	  *(inverseKey + 8) = -0.489795918;
-//
-//
-////	  displayDouble(inverseKey);
-//	  int messageVector[MATRIXSIZE][1];
-//	  for (int i = 0; i < MATRIXSIZE; i++)
-//	  {
-//		 messageVector[i][0] = (int)plainText[i] - 65;;
-//	  }
-//
-//	  for (int i = 0; i < MATRIXSIZE; i++)
-//	  {
-//		 for (int j = 0; j < MATRIXSIZE; j++)
-//		 {
-//			double num =remainder(* (inverseKey + index(i,j)), CHARACTER_SIZE);
-//			* (inverseKey + index(i,j)) = num ;
-//		 }
-//	  }
-////	  displayDouble(inverseKey);
-//	  for (int i = 0; i < MATRIXSIZE; i++)
-//	  {
-//		 for (int j = 0; j < 1; j++)
-//		 {
-//			for (int x = 0; x < 3; x++)
-//			{
-//			   double temp = (* (inverseKey + index(i,x))) * messageVector[x][j];
-//			   matrix[i][j] += (int)temp;
-//			}
-//
-//		 }
-//	  }
-//   }
-   
-   
-   /**********************************************************
    * MATRIXTOSTRING
    * Convert the matrix to a string
    **********************************************************/
@@ -199,101 +151,7 @@ public:
 	 return text;
    }
    
-   /**********************************************************
-   * GETCOFACTOR
-   * Get the cofactor of the matrix
-   **********************************************************/
-//   void getCofactor(int * A, int * temp, int p, int q, int n)
-//   {
-//	  int N = 3;
-//	  int i = 0, j = 0;
-//
-//	  // Looping for each element of the matrix
-//	  for (int row = 0; row < n; row++)
-//	  {
-//		 for (int col = 0; col < n; col++)
-//		 {
-//			 //  Copying into temporary matrix only those element
-//			 //  which are not in given row and column
-//			 if (row != p && col != q)
-//			 {
-//				* (temp + index(i,j)) = * (A + index(i,j));
-//
-//				 // Row is filled, so increase row index and
-//				 // reset col index
-//				 if (j == n - 1)
-//				 {
-//					 j = 0;
-//					 i++;
-//				 }
-//			 }
-//		 }
-//	  }
-//   }
 
-   /**********************************************************
-   * DETERMINANT
-   * Get the determinant of the matrix
-   **********************************************************/
-//   int determinant(int * A, int n)
-//   {
-//	  int D = 0; // Initialize result
-////
-////	  //  Base case : if matrix contains single element
-////	  if (n == 1)
-////		return * A;
-////
-////	  int *temp= new int[MATRIXSIZE * MATRIXSIZE]; // To store cofactors
-////	  int sign = 1;  // To store sign multiplier
-////
-////	  // Iterate for each element of first row
-////	  for (int f = 0; f < n; f++)
-////	  {
-////		// Getting Cofactor of key[0][f]
-////		getCofactor(A, temp, 0, f, n);
-////		D += sign * (* (A + index(0,f) )) * determinant(temp, n - 1);
-////
-////		// terms are to be added with alternate sign
-////		sign = -sign;
-////	  }
-////
-//	  return D;
-//
-//   }
-
-   /**********************************************************
-   * ADJOINT
-   * Get the inverse matrix
-   **********************************************************/
-//   void adjoint(int * adj)
-//   {
-//	  int N = MATRIXSIZE;
-//	  if (N == 1)
-//	  {
-//		 *adj = 1;
-//		 return;
-//	  }
-//
-//	   // temp is used to store cofactors of key
-//	  int sign = 1;
-//	  int * temp= new int[MATRIXSIZE * MATRIXSIZE];
-//	  for (int i=0; i<N; i++)
-//	  {
-//		for (int j=0; j<N; j++)
-//		{
-//			// Get cofactor of A[i][j]
-//			getCofactor(key, temp, i, j, N);
-//
-//			// sign of adj[j][i] positive if sum of row
-//			// and column indexes is even.
-//			sign = ((i+j)%2==0)? 1: -1;
-//
-//			// Interchanging rows and columns to get the
-//			// transpose of the cofactor matrix
-//			*(adj + index(i,j)) = (sign)*(determinant(temp, N-1));
-//		}
-//	  }
-//   }
    /**********************************************************
    * INVERSE
    * Get the inverse matrix
@@ -354,17 +212,12 @@ public:
 		 matrixMultiply(cipherText.substr(i, 2));
 		 plainText += matrixToString(matrix);
 	  }
-//	  matrixMultiply(cipherText);
-//	  string plainText = matrixToString(matrix);
-//      std::string plainText = cipherText;
-      // TODO - Add your code here
       return plainText;
    }
    
    
 private:
    int key[2][2];
-//   double * inverseKey;
    int matrix[];
    
 };
