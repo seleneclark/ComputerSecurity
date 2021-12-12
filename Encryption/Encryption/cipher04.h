@@ -13,10 +13,10 @@ using namespace std;
 class Cipher04 : Public Cipher
 {
 public:
-   virtual std::string getPseudoAuth()  { return "pseudocode author"; }
-   virtual std::string getCipherName()  { return "cipher name"; }
-   virtual std::string getEncryptAuth() { return "encrypt author"; }
-   virtual std::string getDecryptAuth() { return "decrypt author"; }
+   virtual std::string getPseudoAuth()  { return "Landon Egbers"; }
+   virtual std::string getCipherName()  { return "Rail Fence"; }
+   virtual std::string getEncryptAuth() { return "Landon Egebrs"; }
+   virtual std::string getDecryptAuth() { return "Landon Egbers"; }
 
    /***********************************************************
     * GET CIPHER CITATION
@@ -24,7 +24,7 @@ public:
     ***********************************************************/
    virtual std::string getCipherCitation()
    {
-      return std::string("citation");
+      return std::string("http://rumkin.com/tools/cipher/railfence.php by Tyler Akins.  Publish date: unknonwn");
    }
    
    /**********************************************************
@@ -37,10 +37,10 @@ public:
 
       // TODO: please format your pseudocode
       // The encrypt pseudocode
-      str =  "insert the encryption pseudocode\n";
+      str =  "Input 1: String we are trying to encode.  Input 2: Password.  Get the number of rows in the rail fence.  Rows in the rail fence = number of characters in the password.  Matrix.  Rows = number of rails.  Columns = length of the message.  [0,0]: Put first letter of the matrix here.  Add 1 to the X coordinate for each added letter.  Add 1 to the Y coordinate until you reach the bottom of the matrix.  If you are at the bottom of the matrix, subtract 1 from the Y coordinate, until you get back to 0.  If you get back to 0, start adding to the Y coordinate again.  Repeat this pattern until you have reached the end of the X axis.  The order that these letters appear is the order in which the letters should appear to a user who wishes to decrypt the message.  Return these letters in this order.\n";
 
       // The decrypt pseudocode
-      str += "insert the decryption pseudocode\n";
+      str += "Get the string we are trying to decode.  Get the password.  If the password is correct, [0,0]: the first letter to be read from the matrix.  Add 1 to the X coordinate for each added letter.  Add 1 to the Y coordinate until you reach the bottom of the matrix.  If you are at the bottom of the matrix, subtract 1 from the Y coordinate, until you get back to 0.  If you get back to 0, start adding to the Y coordinate again.  Repeat this pattern until you have reached the end of the X axis.  If the password is not correct, read the [0,0] coordinate first, then continue to increase the X axis without changing the Y axis.  Repeat this until you have reached the end of the X axis.  Then repeat the X axis, starting from 0 but add 1 to the Y axis.  Repeat this patter until you have reached the end of both the X and Y axis.\n";
 
       return str;
    }
