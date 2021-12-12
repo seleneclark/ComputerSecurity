@@ -16,7 +16,8 @@
 class Cipher05 : public Cipher
 {
 public:
-
+    virtual std::string getEncryptAuth() { return "Jaren Brown"; }
+    virtual std::string getDecryptAuth() { return "Jaren Brown"; }
     /***********************************************************
      * GET CIPHER CITATION
      * Returns the citation from which we learned about the cipher
