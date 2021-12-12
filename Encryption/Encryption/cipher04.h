@@ -10,7 +10,7 @@ using namespace std;
 /********************************************************************
  * CLASS
  *******************************************************************/
-class Cipher04 : Public Cipher
+class Cipher04 : public Cipher
 {
 public:
    virtual std::string getPseudoAuth()  { return "Landon Egbers"; }
@@ -97,7 +97,8 @@ public:
     * DECRYPT
     * TODO: ADD description
     **********************************************************/
-string decrypt(string cipher, string password)
+   virtual std::string decrypt(const std::string& cipher,
+       const std::string& password)
 {
            int key = password.length();
     // create the matrix to cipher plain text
